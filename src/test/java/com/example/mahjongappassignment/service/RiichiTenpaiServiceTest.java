@@ -38,19 +38,19 @@ class RiichiTenpaiServiceTest {
 
     @Test
     void shouldSupportThirteenOrphansThirteenSidedWait() {
-        TenpaiResult response = service.checkTenpai("19m19p19snewswhrg");
+        TenpaiResult response = service.checkTenpai("19m19p19s1234567z");
 
         assertTrue(response.tenpai());
         assertEquals(13, response.waitingTiles().size());
     }
 
     @Test
-    void shouldSupportDragonLetters() {
-        TenpaiResult response = service.checkTenpai("123m456m789mwhwhwhg");
+    void shouldSupportHonorZNotation() {
+        TenpaiResult response = service.checkTenpai("123m456m789m5556z");
 
         assertTrue(response.tenpai());
         assertEquals(1, response.waitingTiles().size());
-        assertTrue(response.waitingTiles().contains("g"));
+        assertTrue(response.waitingTiles().contains("6z"));
     }
 
     @Test

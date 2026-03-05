@@ -38,25 +38,6 @@ public class HandParser {
                 continue;
             }
 
-            if (i + 1 < normalized.length() && normalized.startsWith("wh", i)) {
-                hand.addTile(Tile.of(TileType.WHITE));
-                i += 2;
-                continue;
-            }
-
-            if (c == 'n' || c == 'e' || c == 'w' || c == 's' || c == 'r' || c == 'g') {
-                hand.addTile(Tile.of(switch (c) {
-                    case 'n' -> TileType.NORTH;
-                    case 'e' -> TileType.EAST;
-                    case 'w' -> TileType.WEST;
-                    case 's' -> TileType.SOUTH;
-                    case 'r' -> TileType.RED;
-                    default -> TileType.GREEN;
-                }));
-                i++;
-                continue;
-            }
-
             throw new InvalidHandException("Invalid token '" + c + "'.");
         }
 

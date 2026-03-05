@@ -28,13 +28,13 @@ public enum TileType {
     S7(24, "7s"),
     S8(25, "8s"),
     S9(26, "9s"),
-    NORTH(27, "n"),
-    EAST(28, "e"),
-    WEST(29, "w"),
-    SOUTH(30, "s"),
-    WHITE(31, "wh"),
-    RED(32, "r"),
-    GREEN(33, "g");
+    EAST(27, "1z"),
+    SOUTH(28, "2z"),
+    WEST(29, "3z"),
+    NORTH(30, "4z"),
+    WHITE(31, "5z"),
+    GREEN(32, "6z"),
+    RED(33, "7z");
 
     public static final int COUNT = values().length;
     private static final TileType[] BY_INDEX = values();

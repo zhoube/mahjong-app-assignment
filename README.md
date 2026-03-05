@@ -27,16 +27,15 @@ Examples:
 - `123m` = 1m 2m 3m
 - `1145p` = 1p 1p 4p 5p
 
-### Honor tiles (custom format)
-- Winds: `n e w s` (north east west south)
-- Dragons: `wh r g` (white red green)
-
-Examples:
-- `n e s wh r`
-- compact form without spaces is also allowed, e.g. `newswhrg`
-
-### Alternative honor input
-- `z` format is also supported (`1-7z`) for honors.
+### Honor tiles (`z` format)
+Use numbers under `z`:
+- `1z` = East
+- `2z` = South
+- `3z` = West
+- `4z` = North
+- `5z` = White dragon
+- `6z` = Green dragon
+- `7z` = Red dragon
 
 ## API
 
@@ -69,47 +68,29 @@ From project root:
 
 Server starts on `http://localhost:8080`.
 
-## Fast Manual Testing (PowerShell Helper)
-
-After the app is running, define a helper once in your terminal:
-
-```powershell
-function tenpai($hand) {
-  $body = @{ hand = $hand } | ConvertTo-Json
-  Invoke-RestMethod -Method Post `
-    -Uri "http://localhost:8080/api/mahjong/tenpai" `
-    -ContentType "application/json" `
-    -Body $body
-}
-```
-
-Then test quickly:
-
-```powershell
-tenpai "123456789m 1145p"
-tenpai "19m19p19snewswhrg"
-tenpai "123m456m789mwhwhwhg"
-```
-
 ## Run Tests
 
 ```powershell
 .\mvnw.cmd test
 ```
 
-## Quick API Test (PowerShell)
+## API Testing (Postman)
 
-```powershell
-$body = @{ hand = "123456789m 1145p" } | ConvertTo-Json
-Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/mahjong/tenpai" -ContentType "application/json" -Body $body
+Use:
+- Method: `POST`
+- URL: `http://localhost:8080/api/mahjong/tenpai`
+- Header: `Content-Type: application/json`
+- Body (raw JSON):
+
+```json
+{
+  "hand": "123456789m 1145p"
+}
 ```
 
-Another example using honors:
-
-```powershell
-$body = @{ hand = "123m456m789mwhwhwhg" } | ConvertTo-Json
-Invoke-RestMethod -Method Post -Uri "http://localhost:8080/api/mahjong/tenpai" -ContentType "application/json" -Body $body
-```
+More sample hands:
+- `19m19p19s1234567z`
+- `123m456m789m5556z`
 
 ## Notes
 

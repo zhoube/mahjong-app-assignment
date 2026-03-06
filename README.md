@@ -1,2 +1,2 @@
 # mahjong-app-assignment
-Training 3 dogs to learn Spring Boot
+Training 3 dogs to learn Spring Boot and i love pork
